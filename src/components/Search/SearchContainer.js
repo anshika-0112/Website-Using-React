@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import useFetch from "../customHooks/useFetch";
-import People from "../Home/People";
-import Search from "./Search";
+import {Search} from "./index";
 
 const SearchContainer=()=>
 {

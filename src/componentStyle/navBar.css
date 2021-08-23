@@ -1,0 +1,28 @@
+.navBar{
+    padding: 21px;
+    background-color: #282c34;
+    height: 26px;
+    border-bottom: 2px solid white;
+}
+
+.navBar a{
+    padding: 25px;
+    color: white;
+    text-decoration: none;
+}
+
+.navBar #link1{
+    float: left;
+}
+
+.navBar #link2{
+    float: right;
+} 
+body{
+    background-color: aliceblue;
+}
+
+#userName{
+    color:white;
+    padding: 10px;
+}

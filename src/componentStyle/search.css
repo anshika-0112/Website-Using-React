@@ -1,0 +1,33 @@
+#searchContainer{
+    background: url("../assets/images/background4.jpg") no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchInput{
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 80%;
+}
+.search-btn{
+    background-color:#282c34 ;
+    color: white;
+    width: 200px;
+    height: 45px;
+    border: none;
+}
+
+.searchResults{
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #ed143d40;
+}
+
+.searchResults h4{
+    margin:6px
+}

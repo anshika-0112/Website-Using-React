@@ -11,16 +11,22 @@
 }
 
 .input-field{
+    display: block;
+    margin: 10px 0px;
     padding: 10px;
-    width: 80%;
-    margin: 5px;
+    width: 500px;
 }
 
 .btn-primary{
-    margin: 5px;
+    margin: auto;
     width: 150px;
-    background-color: cornflowerblue;
+    background-color: #282c34;
     height: 35px;
+    display: block;
     color: white;
     border: none;
+}
+
+.btn-primary:hover{
+    cursor: pointer;
 }

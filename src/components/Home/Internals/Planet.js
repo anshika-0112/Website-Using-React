@@ -1,4 +1,4 @@
-import useFetch from "../customHooks/useFetch";
+import useFetch from "../../customHooks/useFetch";
 import { Link } from "react-router-dom";
 
 const Planet = () => {
@@ -8,7 +8,7 @@ const Planet = () => {
     const planetData = data.results;
     planetRows = planetData.map((planet) => {
       const planetId=planet.url.split('/')[5];
-      return <li><Link to={`/planets/${planetId}`} key={planet.url}>{planet.name}</Link></li>;
+      return <h2 key={planet.url}><Link to={`/planets/${planetId}`}className="links" >{planet.name}</Link></h2>;
     });
   }
   return <div>{planetRows}</div>;

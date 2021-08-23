@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Route,Redirect } from "react-router";
-import authContext from "./context";
+import authContext from "../context";
 
 function PrivateRoute({ children, ...rest }) {
     let auth = useContext(authContext);
@@ -8,8 +8,9 @@ function PrivateRoute({ children, ...rest }) {
     return (
       <Route
         {...rest}
-        render={({ location }) =>
-          (auth.user || isLoggedIn) ? (
+        render={({ location }) =>{
+        console.log(location);
+          return (auth.user || isLoggedIn) ? (
             children
           ) : (
             <Redirect
@@ -19,7 +20,7 @@ function PrivateRoute({ children, ...rest }) {
               }}
             />
           )
-        }
+        }}
       />
     );
   }

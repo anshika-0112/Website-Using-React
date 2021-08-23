@@ -2,25 +2,25 @@ import { useContext } from "react";
 import authContext from "../context";
 import { Link, useHistory } from "react-router-dom";
 import { Fragment } from "react";
-const Navbar = () => {
-    let history=useHistory();
-  let auth = useContext(authContext);
-  const handleSignOut = () => {
-      sessionStorage.removeItem("user");
-      auth.signout(()=>history.push('/'))
-  };
+import "../../componentStyle/navBar.css"
+const Navbar = ({handleSignOut,auth}) => {
   return (
-    <nav>
+    <nav className="navBar">
+      <div id="link1">
+        <Link to="/home">Home</Link>
       <Link to="/about">About</Link>
       <Link to="/contact">Contact</Link>
+      </div>
+      <div id="link2">
       {auth.user ? (
         <Fragment>
-            <span>{auth.user}</span>
+            <span id="userName">{auth.user}</span>
           <button onClick={handleSignOut}>Signout</button>
         </Fragment>
       ) : (
         <Link to="/">Login</Link>
       )}
+      </div>
     </nav>
   );
 };

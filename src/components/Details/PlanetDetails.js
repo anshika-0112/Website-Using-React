@@ -1,37 +1,44 @@
-import PlanetTable from "../PlanetTable/PlanetTable";
 import { useParams } from "react-router";
-import { useEffect,useState } from "react";
-const PlanetDetails=()=>
-{
-    console.log("i am here")
-    const [planetDetails,setPlanetDetails]=useState(null);
-    const {planetId}=useParams();
-    useEffect(()=>
-    {
-        const fetchPlanetInfo=async()=>
-        {
-            const url=`https://swapi.dev/api/planets/${planetId}`;
-            const planetResponse=await fetch(url);
-            const planetInfo=await planetResponse.json();
-            console.log("planetInfo",planetInfo)
-            setPlanetDetails(planetInfo);
-        }
-        fetchPlanetInfo();
-    },[planetId])
-    return(
-        <div><h1>Details</h1>
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-        {planetDetails?<div><p>{planetDetails.name}</p>
-        <p>
-        {planetDetails.climate}
-        </p>
-        <p>{planetDetails.population}</p>
-        <p>{planetDetails.diameter}</p>
+const PlanetDetails = () => {
+  let history=useHistory();
+  const [planetDetails, setPlanetDetails] = useState(null);
+  const { planetId } = useParams();
+  const handleGoBack=()=>
+  {
+    history.goBack();
+  }
+  useEffect(() => {
+    const fetchPlanetInfo = async () => {
+      const url = `https://swapi.dev/api/planets/${planetId}`;
+      const planetResponse = await fetch(url);
+      const planetInfo = await planetResponse.json();
+      console.log("planetInfo", planetInfo);
+      setPlanetDetails(planetInfo);
+    };
+    fetchPlanetInfo();
+  }, [planetId]);
+  return (
+    <div className="details" id="planetDetailContainer">
+      <h1>Details</h1>
 
-        </div>:null}
-        
+      {planetDetails ? (
+        <div>
+          <p><span className="boldText">Name: </span>{planetDetails.name}</p>
+          <p><span className="boldText">Climate: </span>{planetDetails.climate}</p>
+          <p><span className="boldText">Population: </span>{planetDetails.population}</p>
+          <p><span className="boldText">Diameter: </span>{planetDetails.diameter}</p>
+          <p><span className="boldText">Orbital Period: </span>{planetDetails.orbital_period}</p>
+          <p><span className="boldText">Terrain: </span>{planetDetails.terrain}</p>
+          <p><span className="boldText">Gravity: </span>{planetDetails.gravity}</p>
+          <p><span className="boldText">Surface Water: </span>{planetDetails.surface_water}</p>
         </div>
-    );
-}
+      ) : null}
+      <button className="search-btn" onClick={handleGoBack}>Go Back</button>
+    </div>
+  );
+};
 
 export default PlanetDetails;

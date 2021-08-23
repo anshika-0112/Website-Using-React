@@ -1,0 +1,29 @@
+.category{
+    border: 2px solid;
+    border-radius: 9px;
+    margin: 10px;
+    width: 257px;
+    padding: 10px;
+    background-color: #ffc0cb96;
+    text-align: center;
+    
+}
+#categoryContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.homeContainer{
+    background: url("../assets/images/background4.jpg") no-repeat center center/cover;
+}
+
+#home{
+    color: white;
+    text-align: center;
+    margin: -1px;
+}
+
+.links{
+    text-decoration: none;
+    color: black;
+}

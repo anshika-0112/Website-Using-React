@@ -4,13 +4,13 @@ import authContext from "../context";
 import Login from "./Login";
 
 const LoginContainer = () => {
-  let history=useHistory();
+  let history = useHistory();
   const [state, setState] = useState({
     username: "",
     password: "",
-    loggedIn: false,
   });
-  const auth=useContext(authContext);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const auth = useContext(authContext);
   console.log(auth);
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -32,13 +32,11 @@ const LoginContainer = () => {
       authenticatedUser = authenticateUser(userDetails.results, userName);
       console.log("authenticated", authenticatedUser);
     }
-    if (userDetails.count === 0 || authenticatedUser.length === 0) {
-      alert("Enter a correct Username");
-    } else {      
-      
-      sessionStorage.setItem("user",state.username);
-      auth.signin(()=>history.push('/home'));
-      setState({ ...state, loggedIn: true });
+    if (userDetails.count === 0 || authenticatedUser.length === 0)
+      setErrorMessage("Please enter correct login details");
+    else {
+      sessionStorage.setItem("user", state.username);
+      auth.signin(() => history.push("/home"));
     }
   };
 
@@ -51,12 +49,15 @@ const LoginContainer = () => {
     return authenticatedUser;
   };
   return (
-    <Login
-      state={state}
-      checkPasswordName={checkPasswordName}
-      checkUserName={checkUserName}
-      handleSignIn={handleSignIn}
-    />
+    <>
+      <Login
+        state={state}
+        checkPasswordName={checkPasswordName}
+        checkUserName={checkUserName}
+        handleSignIn={handleSignIn}
+        errorMessage={errorMessage}
+      />
+    </>
   );
 };
 

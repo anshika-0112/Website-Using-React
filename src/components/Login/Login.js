@@ -1,7 +1,7 @@
-import { Link, BrowserRouter as Router } from "react-router-dom";
 import user from "../../assets/images/userImage.png";
 import "../../componentStyle/login.css";
-const Login = ({ state, checkPasswordName, checkUserName, handleSignIn }) => {
+
+const Login = ({ state, checkPasswordName, checkUserName, handleSignIn,errorMessage }) => {
   return (
     <div id="login-page">
       <h1>Login</h1>
@@ -23,7 +23,7 @@ const Login = ({ state, checkPasswordName, checkUserName, handleSignIn }) => {
           onChange={checkPasswordName}
           className="input-field"
         ></input>
-
+              {errorMessage && <div>{errorMessage}</div>}
         <button type="submit" className="btn-primary">
           Sign in
         </button>
