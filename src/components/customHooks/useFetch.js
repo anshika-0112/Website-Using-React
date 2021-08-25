@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useState,useContext } from "react";
 const useFetch = (categoryName) => {
   console.log("here");
   const [fetched, setFetched] = useState(false);
@@ -17,7 +16,6 @@ const useFetch = (categoryName) => {
     };
     fetchData();
   }, [categoryName]);
-
   return [data, fetched];
 };
 export default useFetch;

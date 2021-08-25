@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import authContext from "../context";
+import {authContext} from "../context";
 import Login from "./Login";
 
 const LoginContainer = () => {
@@ -36,6 +36,7 @@ const LoginContainer = () => {
       setErrorMessage("Please enter correct login details");
     else {
       sessionStorage.setItem("user", state.username);
+      setErrorMessage(null);
       auth.signin(() => history.push("/home"));
     }
   };

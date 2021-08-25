@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const PeopleRows = ({ searchList }) => {
-  console.log("search list", searchList);
   let peopleRows = null;
 
   if (searchList) {
