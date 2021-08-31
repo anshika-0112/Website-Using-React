@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import {authContext} from "../context";
+import authContext from "../../context";
 import Login from "./Login";
 
 const LoginContainer = () => {

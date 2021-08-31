@@ -1,6 +1,6 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState } from "react";
+
 const useFetch = (categoryName) => {
-  console.log("here");
   const [fetched, setFetched] = useState(false);
   const [data, setData] = useState([]);
   const url = `https://swapi.dev/api/${categoryName}`;

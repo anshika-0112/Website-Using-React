@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 const FilmRows = ({ searchList }) => {
-  let filmRows = <h1></h1>;
+  let filmRows = "";
   if (searchList) {
     filmRows = searchList.map((film) => {
       const filmId = film.url.split("/")[5];

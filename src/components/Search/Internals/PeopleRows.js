@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const PeopleRows = ({ searchList }) => {
-  let peopleRows = null;
+  let peopleRows = "";
 
   if (searchList) {
     peopleRows = searchList.map((person) => {

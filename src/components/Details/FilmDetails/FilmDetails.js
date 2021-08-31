@@ -1,25 +1,6 @@
-import { useEffect, useState } from "react";
-import { useParams,useHistory } from "react-router-dom";
-import "../../componentStyle/details.css";
+import "../../../componentStyle/details.css";
 
-const FilmDetails = () => {
-  const [movieDetails, setMovieDetails] = useState(null);
-  const { filmId } = useParams();
-  let history=useHistory();
-  useEffect(() => {
-    const fetchFilmInfo = async () => {
-      const url = `https://swapi.dev/api/films/${filmId}`;
-      const movieResponse = await fetch(url);
-      const movieInfo = await movieResponse.json();
-      console.log(movieInfo);
-      setMovieDetails(movieInfo);
-    };
-    fetchFilmInfo();
-  }, [filmId]);
-  const handleGoBack=()=>
-  {
-    history.goBack();
-  }
+const FilmDetails = ({handleGoBack,movieDetails}) => {
   return (
     <div className="detailContainer" id="filmDetailContainer">
       <h1>Movie Details</h1>

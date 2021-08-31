@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const PlanetRows = ({ searchList }) => {
-  let planetRows = <h1></h1>;
+  let planetRows = "";
   if (searchList) {
     planetRows = searchList.map((planet) => {
       const planetId = planet.url.split("/")[5];

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import {authContext} from "../context";
+import authContext from "../../context";
 import {  useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
 

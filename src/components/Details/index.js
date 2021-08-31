@@ -1,4 +1,5 @@
-import FilmDetails from "./FilmDetails";
-import PersonDetails from "./PersonDetails";
-import PlanetDetails from "./PlanetDetails";
-export {FilmDetails,PersonDetails,PlanetDetails};
+import FilmContainer from "./FilmDetails/index";
+import PersonContainer from "./PersonDetails/index";
+import PlanetContainer from "./PlanetDetails/index";
+
+export {FilmContainer,PersonContainer,PlanetContainer};

@@ -24,7 +24,7 @@ const Search = ({ handleInput, searchList, input, cName, lastElementRef,loading,
         {searchList && cName === "people" ? (
           <PeopleRows searchList={searchList} />
         ) : null}
-        {!loading && hasMore && <div>Loading...</div>}
+        {loading && hasMore && <div>Loading...</div>}
       </div>
       
       <div  ref={lastElementRef}></div>
