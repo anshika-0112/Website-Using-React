@@ -10,7 +10,7 @@ const Planet = () => {
       const planetId = planet.url.split("/")[5];
       return (
         <h2 key={planet.url}>
-          <Link to={`/planets/${planetId}`} className="links">
+          <Link to={`/dashboard/planets/${planetId}`} className="links">
             {planet.name}
           </Link>
         </h2>

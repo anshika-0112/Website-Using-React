@@ -37,7 +37,7 @@ const LoginContainer = () => {
     else {
       sessionStorage.setItem("user", state.username);
       setErrorMessage(null);
-      auth.signin(() => history.push("/home"));
+      auth.signin(() => history.push("/dashboard/home"));
     }
   };
 

@@ -12,7 +12,7 @@ const People = () => {
       return (
         <h2>
           <Link
-            to={`/People/${peopleId}`}
+            to={`/dashboard/People/${peopleId}`}
             key={people.peopleId}
             className="links"
           >

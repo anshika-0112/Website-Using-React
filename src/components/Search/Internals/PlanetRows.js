@@ -7,7 +7,7 @@ const PlanetRows = ({ searchList }) => {
       const planetId = planet.url.split("/")[5];
       return (
         <h4 key={planet.url}>
-          <Link to={`/planets/${planetId}`}  className="links">
+          <Link to={`/dashboard/planets/${planetId}`}  className="links">
             {planet.name}
           </Link>
         </h4>

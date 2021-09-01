@@ -7,14 +7,14 @@ const Navbar = ({ handleSignOut, auth }) => {
     <div>
       <nav className="navBar">
         <div id="link1">
-          <Link to="/home">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/dashboard/home">Home</Link>
+          <Link to="/dashboard/about">About</Link>
+          <Link to="/dashboard/contact">Contact</Link>
         </div>
         <div id="link2">
           {auth.user ? (
             <>
-              <Link id="username" to={`/profile/${auth.user}`}>
+              <Link id="username" to={`/dashboard/profile/${auth.user}`}>
                 {auth.user}
               </Link>
               <button onClick={handleSignOut}>Signout</button>

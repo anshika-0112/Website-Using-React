@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const HomeContainer = () => {
   const history = useHistory();
   const handleCategorySearch = (categoryName) => {
-    history.push(`/search/${categoryName}`);
+    history.push(`/dashboard/search/${categoryName}`);
   };
   return <Home handleCategorySearch={handleCategorySearch} />;
 };

@@ -6,7 +6,7 @@ const FilmRows = ({ searchList }) => {
       const filmId = film.url.split("/")[5];
       return (
         <h4 key={film.url} >
-          <Link to={`/Films/${filmId}`} className="links">
+          <Link to={`/dashboard/Films/${filmId}`} className="links">
             {film.title}
           </Link>
         </h4>

@@ -8,7 +8,7 @@ const PeopleRows = ({ searchList }) => {
       const personId = person.url.split("/")[5];
       return (
         <h4 key={person.url}>
-          <Link to={`/People/${personId}`}  className="links">
+          <Link to={`/dashboard/People/${personId}`}  className="links">
             {person.name}
           </Link>
         </h4>

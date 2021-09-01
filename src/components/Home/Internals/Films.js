@@ -11,7 +11,7 @@ const Films = () => {
       console.log("filmId", filmId);
       return (
         <h2>
-          <Link to={`/Films/${filmId}`} key={filmId} className="links">
+          <Link to={`/dashboard/Films/${filmId}`} key={filmId} className="links">
             {film.title}
           </Link>
         </h2>
