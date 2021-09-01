@@ -1,7 +1,8 @@
 import user from "../../assets/images/userImage.png";
 import "../../componentStyle/login.css";
-
-const Login = ({ state, checkPasswordName, checkUserName, handleSignIn,errorMessage }) => {
+import { useDispatch } from "react-redux";
+const Login = ({ username,password, checkPassword, checkUserName, handleSignIn,errorMessage }) => {
+  const dispatch=useDispatch();
   return (
     <div id="login-page">
       <h1>Login</h1>
@@ -11,16 +12,16 @@ const Login = ({ state, checkPasswordName, checkUserName, handleSignIn,errorMess
         <input
           required
           type="text"
-          value={state.username}
-          onChange={checkUserName}
+          value={username}
+          onChange={(e)=>dispatch(checkUserName(e))}
           className="input-field"
         ></input>
         <label className="label">Password</label>
         <input
           required
           type="password"
-          value={state.password}
-          onChange={checkPasswordName}
+          value={password}
+          onChange={(e)=>dispatch(checkPassword(e))}
           className="input-field"
         ></input>
               {errorMessage && <div>{errorMessage}</div>}
