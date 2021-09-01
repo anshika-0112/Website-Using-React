@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 const FilmContainer = () => {
+  console.log("in film details");
   const [movieDetails, setMovieDetails] = useState(null);
   const { filmId } = useParams();
   let history = useHistory();
