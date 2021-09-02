@@ -19,10 +19,9 @@ const Dashboard = () => {
   let match = useRouteMatch();
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Switch>
-        <Route path="/dashboard/about" component={About} />
-        <Route path="/dashboard/contact" component={Contact} />
+        
         <Route path="/dashboard/profile/:userName" component={Profile} />
         <Route path={`${match.path}/search/:cName`} component={Search} />
         <Route path={`${match.path}/home`}>

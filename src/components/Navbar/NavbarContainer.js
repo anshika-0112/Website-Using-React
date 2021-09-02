@@ -6,10 +6,11 @@ import Navbar from "./Navbar";
 const NavbarContainer = () => {
   let history = useHistory();
   let auth = useContext(authContext);
+  console.log(auth);
   const isLoggedIn=sessionStorage.getItem("user");
   const handleSignOut = () => {
     sessionStorage.removeItem("user");
-    auth.signout(() => history.push("/"));
+    auth.signout(() => history.push("/login"));
   };
   return(
       <Navbar handleSignOut={handleSignOut} auth={auth} isLoggedIn={isLoggedIn} />

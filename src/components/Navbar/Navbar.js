@@ -3,13 +3,14 @@ import React, { Suspense } from "react";
 import "../../componentStyle/navBar.css";
 
 const Navbar = ({ handleSignOut, auth }) => {
+  console.log("auth",auth);
   return (
     <div>
       <nav className="navBar">
         <div id="link1">
           <Link to="/dashboard/home">Home</Link>
-          <Link to="/dashboard/about">About</Link>
-          <Link to="/dashboard/contact">Contact</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
         </div>
         <div id="link2">
           {auth.user ? (
@@ -20,7 +21,7 @@ const Navbar = ({ handleSignOut, auth }) => {
               <button onClick={handleSignOut}>Signout</button>
             </>
           ) : (
-            <Link to="/">Login</Link>
+            <Link to="/login">Login</Link>
           )}
         </div>
       </nav>
