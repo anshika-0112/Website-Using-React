@@ -11,6 +11,7 @@ const SearchContainer = () => {
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
+    console.log("pageNumber",pageNumber);
     dataSearch(cName, input, pageNumber, (data) => {
       setLoading(false);
       if (data.next) {
@@ -27,8 +28,6 @@ const SearchContainer = () => {
   useEffect(() => {
     setSearchList([]);
   }, [input]);
-  console.log("search list", searchList);
-
   const observer = useRef();
   const lastElementRef = useCallback(
     (node) => {

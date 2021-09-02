@@ -14,8 +14,8 @@ const Navbar = ({ handleSignOut, auth }) => {
         <div id="link2">
           {auth.user ? (
             <>
-              <Link id="username" to={`/profile/${auth.user}`}>
-                {auth.user}
+              <Link id="username" to={`/profile/${JSON.parse(auth.user).name}`}>
+                {JSON.parse(auth.user).name}
               </Link>
               <button onClick={handleSignOut}>Signout</button>
             </>
