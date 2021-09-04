@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = ({ handleSignOut }) => {
   const user=useSelector(state => state.user.userDetails)
-  const isAuthenticated=useSelector(state => state.auth.isAuthenticated)
+  const isAuthenticated=useSelector(state => state.auth.authenticated)
 
   return (
     <div>

@@ -1,11 +1,13 @@
 import {  useState } from "react";
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 import setUserDetails from "../redux/user/userActions";
-import isAuthenticated from "../redux/auth/authActions";
+import {authenticate} from "../redux/auth/authActions";
 
 const LoginContainer = () => {
+  const isAuthenticated= useSelector(state => state.auth.authenticated);
+  console.log("tell",isAuthenticated);
   const dispatch = useDispatch();
   let history = useHistory();
   const [state, setState] = useState({
@@ -31,7 +33,6 @@ const LoginContainer = () => {
     const url = `https://swapi.dev/api/people/?search=${userName}`;
     const userDetailsResponse = await fetch(url);
     const userDetails = await userDetailsResponse.json();
-    console.log("details", userDetails.results[0]);
     dispatch(setUserDetails(userDetails.results[0]));
     let authenticatedUser = [];
     if (userDetails.count !== 0) {
@@ -39,7 +40,8 @@ const LoginContainer = () => {
       if (authenticatedUser.length !== 0) {
         sessionStorage.setItem("user", JSON.stringify(userDetails.results[0]));
         setErrorMessage(null);
-        dispatch(isAuthenticated(true));
+        dispatch(authenticate());
+        console.log("in login",isAuthenticated);
         history.push("/home");
       } else {setErrorMessage("Please enter correct login details");}
     } else setErrorMessage("Please enter correct login details");

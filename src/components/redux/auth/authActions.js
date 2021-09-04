@@ -1,10 +1,8 @@
-import { IS_AUTHENTICATED } from "./authTypes"
+import { AUTHENTICATED } from "./authTypes"
 
-const isAuthenticated=(flag)=>
+export const authenticate=()=>
 {
     return{
-        type:IS_AUTHENTICATED,
-        payload:flag
+        type:AUTHENTICATED,
     }
 }
-export default isAuthenticated;
