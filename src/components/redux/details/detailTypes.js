@@ -1,1 +1,3 @@
 export const SET_PEOPLE_LIST="SET_PEOPLE_LIST";
+export const SET_PLANET_LIST="SET_PLANET_LIST";
+export const SET_FILM_LIST="SET_FILM_LIST";

@@ -1,7 +1,9 @@
-import { SET_PEOPLE_LIST } from "./detailTypes";
+import { SET_FILM_LIST, SET_PEOPLE_LIST, SET_PLANET_LIST } from "./detailTypes";
 
 const initialState = {
-  peopleList: null,
+  peopleList: [],
+  filmList: [],
+  planetList: [],
 };
 
 const detailReducer = (state = initialState, action) => {
@@ -9,7 +11,17 @@ const detailReducer = (state = initialState, action) => {
     case SET_PEOPLE_LIST:
       return {
         ...state,
-        peopleList: action.value,
+        peopleList: action.payload,
+      };
+    case SET_PLANET_LIST:
+      return {
+        ...state,
+        planetList: action.payload,
+      };
+    case SET_FILM_LIST:
+      return {
+        ...state,
+        filmList: action.payload,
       };
     default:
       return state;

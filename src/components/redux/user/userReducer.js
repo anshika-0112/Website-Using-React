@@ -1,7 +1,7 @@
 import { SET_USER_DETAILS } from "./userType";
 
 const initialState = {
-  userDetails: JSON.parse(sessionStorage.user)
+  userDetails: JSON.parse(sessionStorage.getItem("user"))
 };
 
 const userReducer = (state = initialState, action) => {

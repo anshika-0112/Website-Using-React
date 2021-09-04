@@ -2,32 +2,48 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Search } from "./index";
 import dataSearch from "../../utils/dataSearch";
+import useCategoryList from "../../utils/useCategoryList";
 
 const SearchContainer = () => {
-  const [searchList, setSearchList] = useState([]);
-  const { cName } = useParams();
-  const [loading, setLoading] = useState(true);
   const [input, setInput] = useState("");
+  const { cName } = useParams();
+  const categoryList=useCategoryList(cName);
+  console.log("category list",categoryList);
+  const [searchList, setSearchList] = useState(categoryList);
+  const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
+
   useEffect(() => {
-    console.log("pageNumber",pageNumber);
-    dataSearch(cName, input, pageNumber, (data) => {
-      setLoading(false);
-      if (data.next) {
-        setHasMore(true);
-      } else {
-        setHasMore(false);
-      }
-      if (data && data.results) {
-        console.log("here");
-        setSearchList((prevList) =>{ return [...new Set([...prevList, ...data.results])]})
-      }
-    });
-  }, [input,pageNumber]);
-  useEffect(() => {
-    setSearchList([]);
+    if (input) setSearchList([]);
   }, [input]);
+
+  useEffect(() => {
+    const fetchData = () =>
+      dataSearch(cName, input, pageNumber, (data) => {
+        setLoading(false);
+        if (data.next) {
+          setHasMore(true);
+        } else {
+          setHasMore(false);
+        }
+        if (data && data.results) {
+          setSearchList((prevList) => {
+            return [...new Set([...prevList, ...data.results])];
+          });
+        }
+      });
+    if (
+      (searchList.length !== 0 && pageNumber !== 1) ||
+      searchList.length === 0 ||
+      input
+    ) {
+      fetchData();
+    } else if (searchList.length !== 0 && pageNumber === 1) {
+      setLoading(false);
+    }
+  }, [input, pageNumber]);
+
   const observer = useRef();
   const lastElementRef = useCallback(
     (node) => {

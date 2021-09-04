@@ -1,16 +1,12 @@
-import { useContext } from "react";
 import { Route,Redirect } from "react-router";
-import authContext from "../../context";
-
+import {useSelector} from "react-redux";
 function PrivateRoute({ children, ...rest }) {
-    let auth = useContext(authContext);
-    const isLoggedIn=sessionStorage.getItem("user");
+    const isAuthenticated= useSelector(state => state.auth.isAuthenticated);
     return (
       <Route
         {...rest}
         render={({ location }) =>{
-        console.log(location);
-          return (auth.user || isLoggedIn) ? (
+            return (isAuthenticated) ? (
             children
           ) : (
             <Redirect

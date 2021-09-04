@@ -1,7 +1,10 @@
 import useFetch from "../../customHooks/useFetch";
 import { Link } from "react-router-dom";
+import { setPlanetList } from "../../redux/details/detailActions";
+import { useDispatch } from "react-redux";
 
 const Planet = () => {
+  const dispatch=useDispatch();
   const [data, fetched] = useFetch("planets");
   let planetRows = "";
   if (fetched) {
@@ -16,6 +19,7 @@ const Planet = () => {
         </h2>
       );
     });
+    dispatch(setPlanetList(data.results));
   }
   return <div>{planetRows}</div>;
 };

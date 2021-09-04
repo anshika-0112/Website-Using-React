@@ -1,8 +1,12 @@
-import { Link, Switch, Route } from "react-router-dom";
-import React, { Suspense } from "react";
+import { Link} from "react-router-dom";
+import React from "react";
 import "../../componentStyle/navBar.css";
+import { useSelector } from "react-redux";
 
-const Navbar = ({ handleSignOut, auth }) => {
+const Navbar = ({ handleSignOut }) => {
+  const user=useSelector(state => state.user.userDetails)
+  const isAuthenticated=useSelector(state => state.auth.isAuthenticated)
+
   return (
     <div>
       <nav className="navBar">
@@ -12,10 +16,10 @@ const Navbar = ({ handleSignOut, auth }) => {
           <Link to="/contact">Contact</Link>
         </div>
         <div id="link2">
-          {auth.user ? (
+          {isAuthenticated ? (
             <>
-              <Link id="username" to={`/profile/${JSON.parse(auth.user).name}`}>
-                {JSON.parse(auth.user).name}
+              <Link id="username" to={`/profile/${user.name}`}>
+                {user.name}
               </Link>
               <button onClick={handleSignOut}>Signout</button>
             </>

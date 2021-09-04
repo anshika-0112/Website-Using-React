@@ -7,7 +7,7 @@ const PeopleRows = ({ searchList }) => {
     peopleRows = searchList.map((person) => {
       const personId = person.url.split("/")[5];
       return (
-        <h4 key={person.url}>
+        <h4 key={personId}>
           <Link to={`/People/${personId}`}  className="links">
             {person.name}
           </Link>

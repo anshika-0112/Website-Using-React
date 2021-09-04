@@ -12,14 +12,14 @@ const People = () => {
       console.log(people);
       const peopleId = people.url.split("/")[5];
       return (
-        <h2 key={people.peopleId}>
+        <h2 key={peopleId}>
           <Link to={`/People/${peopleId}`} className="links">
             {people.name}
           </Link>
         </h2>
       );
     });
-    dispatch(setPeopleList(peopleRows));
+    dispatch(setPeopleList(data.results));
   }
   return <div>{peopleRows}</div>;
 };
