@@ -1,6 +1,8 @@
 import { AUTHENTICATED } from "./authTypes";
+import { getItem } from "../../../utils/manageSessionStorage";
+
 const checkUserLoggedIn = () => {
-  if (sessionStorage.getItem("user")) {
+  if (getItem("user")) {
     return true;
   } else {
     return false;

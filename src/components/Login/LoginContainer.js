@@ -4,7 +4,7 @@ import Login from "./Login";
 import { useDispatch ,useSelector} from "react-redux";
 import setUserDetails from "../redux/user/userActions";
 import {authenticate} from "../redux/auth/authActions";
-
+import { setItem } from "../../utils/manageSessionStorage";
 const LoginContainer = () => {
   const isAuthenticated= useSelector(state => state.auth.authenticated);
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const LoginContainer = () => {
     if (userDetails.count !== 0) {
       authenticatedUser = authenticateUser(userDetails.results, userName);
       if (authenticatedUser.length !== 0) {
-        sessionStorage.setItem("user", JSON.stringify(userDetails.results[0]));
+        setItem("user",JSON.stringify(userDetails.results[0]));
         setErrorMessage(null);
         dispatch(authenticate());
         history.push("/home");
