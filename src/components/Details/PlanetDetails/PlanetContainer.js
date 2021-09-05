@@ -17,7 +17,6 @@ const PlanetContainer=()=>
       const url = `https://swapi.dev/api/planets/${planetId}`;
       const planetResponse = await fetch(url);
       const planetInfo = await planetResponse.json();
-      console.log("planetInfo", planetInfo);
       setPlanetDetails(planetInfo);
     };
     fetchPlanetInfo();

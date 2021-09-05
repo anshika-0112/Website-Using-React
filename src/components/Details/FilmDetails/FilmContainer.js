@@ -11,7 +11,6 @@ const FilmContainer = () => {
       const url = `https://swapi.dev/api/films/${filmId}`;
       const movieResponse = await fetch(url);
       const movieInfo = await movieResponse.json();
-      console.log(movieInfo);
       setMovieDetails(movieInfo);
     };
     fetchFilmInfo();

@@ -7,7 +7,6 @@ import {authenticate} from "../redux/auth/authActions";
 
 const LoginContainer = () => {
   const isAuthenticated= useSelector(state => state.auth.authenticated);
-  console.log("tell",isAuthenticated);
   const dispatch = useDispatch();
   let history = useHistory();
   const [state, setState] = useState({
@@ -21,7 +20,6 @@ const LoginContainer = () => {
     fetchUserDeatils(state.username);
   };
   const checkUserName = (event) => {
-    console.log(event.target.value);
     setState({ ...state, username: event.target.value });
   };
 
@@ -41,7 +39,6 @@ const LoginContainer = () => {
         sessionStorage.setItem("user", JSON.stringify(userDetails.results[0]));
         setErrorMessage(null);
         dispatch(authenticate());
-        console.log("in login",isAuthenticated);
         history.push("/home");
       } else {setErrorMessage("Please enter correct login details");}
     } else setErrorMessage("Please enter correct login details");

@@ -13,7 +13,6 @@ const PersonContainer=()=>
         const url = `https://swapi.dev/api/people/${peopleId}`;
         const personResponse = await fetch(url);
         const personInfo = await personResponse.json();
-        console.log(personInfo);
         setPersonDetails(personInfo);
       };
       fetchPersonInfo();

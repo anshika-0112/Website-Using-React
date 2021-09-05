@@ -13,7 +13,6 @@ const Search = ({
   loading,
   hasMore,
 }) => {
-  console.log("in search",searchList);
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div id="searchContainer">

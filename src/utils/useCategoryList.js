@@ -11,6 +11,7 @@ const useCategoryList=(categoryName)=>
         case "people":return peopleList;
         case "films":return filmList;
         case "planets":return planetList;
+        default:return [];
     }
 }
 export default useCategoryList;

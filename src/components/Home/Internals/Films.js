@@ -8,10 +8,8 @@ const Films = () => {
   const [data, fetched] = useFetch("films");
   let filmRows = "";
   if (fetched) {
-    const filmData = data.results;
-    filmRows = filmData.map((film) => {
+    filmRows = data.map((film) => {
       const filmId = film.url.split("/")[5];
-      console.log("filmId", filmId);
       return (
         <h2 key={filmId}>
           <Link to={`/Films/${filmId}`} className="links">
@@ -20,7 +18,7 @@ const Films = () => {
         </h2>
       );
     });
-    dispatch(setFilmList(data.results));
+    dispatch(setFilmList(data));
   }
   return <div>{filmRows}</div>;
 };
