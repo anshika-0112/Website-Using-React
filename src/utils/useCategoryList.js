@@ -5,7 +5,7 @@ const useCategoryList=(categoryName)=>
     const peopleList=useSelector(state=>state.categoryList.peopleList);
     const filmList=useSelector(state=>state.categoryList.filmList);
     const planetList=useSelector(state=>state.categoryList.planetList);
-    console.log("planet list",planetList);
+
     switch(categoryName)
     {
         case "people":return peopleList;

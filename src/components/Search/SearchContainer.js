@@ -5,14 +5,14 @@ import dataSearch from "../../utils/dataSearch";
 import useCategoryList from "../../utils/useCategoryList";
 
 const SearchContainer = () => {
-  const [input, setInput] = useState("");
   const { cName } = useParams();
   const categoryList=useCategoryList(cName);
-  console.log("category list",categoryList);
+
   const [searchList, setSearchList] = useState(categoryList);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     if (input) setSearchList([]);
@@ -28,11 +28,14 @@ const SearchContainer = () => {
           setHasMore(false);
         }
         if (data && data.results) {
+         
           setSearchList((prevList) => {
+            console.log("data results",data.results,prevList);
             return [...new Set([...prevList, ...data.results])];
           });
         }
       });
+
     if (
       (searchList.length !== 0 && pageNumber !== 1) ||
       searchList.length === 0 ||

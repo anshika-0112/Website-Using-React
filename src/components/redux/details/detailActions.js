@@ -8,7 +8,6 @@ export const setPeopleList = (peopleList) => {
 };
 
 export const setPlanetList = (planetList) => {
-    console.log("inside planet list",planetList);
   return {
     type: SET_PLANET_LIST,
     payload: planetList,
