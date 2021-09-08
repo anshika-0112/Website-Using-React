@@ -1,11 +1,14 @@
 import useFetch from "../../customHooks/useFetch";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setPeopleList } from "../../redux/details/detailActions";
+import { useDispatch,useSelector } from "react-redux";
+import { fetchList, setPeopleList } from "../../redux/details/detailActions";
+import { useEffect } from "react";
 
 const People = () => {
   const dispatch = useDispatch();
-  const [data, fetched] = useFetch("people");
+  const data=useSelector(state=>state.categoryList.peopleList);
+  const fetched=useSelector(state=>state.categoryList.fetched);
+  useEffect(()=>{dispatch(fetchList("people"));},[])
   let peopleRows = "";
   if (fetched) {
     peopleRows = data.map((people) => {
@@ -18,7 +21,6 @@ const People = () => {
         </h2>
       );
     });
-    dispatch(setPeopleList(data));
   }
   return <div>{peopleRows}</div>;
 };

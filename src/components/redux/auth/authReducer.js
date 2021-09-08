@@ -2,7 +2,7 @@ import { AUTHENTICATED } from "./authTypes";
 import { getItem } from "../../../utils/manageSessionStorage";
 
 const checkUserLoggedIn = () => {
-  if (getItem("user")) {
+  if (getItem("user").length!==0) {
     return true;
   } else {
     return false;

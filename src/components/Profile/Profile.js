@@ -12,7 +12,7 @@ const Profile = ({ personDetails }) => {
       <p>Height:- {personDetails.height}</p>
       <p>Weight:- {personDetails.mass}</p>
       {personDetails.films.map((film) => {
-        return <p>{film}</p>;
+        return <p key={film.url}>{film}</p>;
       })}
     </div>
   );

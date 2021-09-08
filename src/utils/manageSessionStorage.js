@@ -1,6 +1,9 @@
 export const getItem=(key)=>
 {
-    return sessionStorage.getItem(key);
+    if(sessionStorage.getItem(key))
+    return JSON.parse(sessionStorage.getItem(key));
+    else
+    return[];
 }
 
 export const setItem=(key,value)=>{

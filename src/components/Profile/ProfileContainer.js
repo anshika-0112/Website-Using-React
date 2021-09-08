@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 
 const ProfileContainer = () => {
   const personDetails = useSelector((state) => 
-     state.user.userDetails);
+     state.user.users);
+     console.log("profilr",personDetails);
 
   return (
-    <div>{personDetails && <Profile personDetails={personDetails} />}</div>
+    <div>{personDetails && <Profile personDetails={personDetails[0]} />}</div>
   );
 };
 

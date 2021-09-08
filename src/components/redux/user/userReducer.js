@@ -1,16 +1,36 @@
-import { SET_USER_DETAILS } from "./userType";
-import { getItem } from "../../../utils/manageSessionStorage";
+import { getItem } from '../../../utils/manageSessionStorage';
+import {
+  FETCH_USERS_REQUEST,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_FAILURE
+} from './userType'
+
 const initialState = {
-  userDetails: JSON.parse(getItem("user"))
-};
+  loading: false,
+  users:getItem("user"),
+  error: ''
+}
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER_DETAILS:console.log(action.payload);
-      return { ...state, userDetails: action.payload };
-    default:
-      return state;
+    case FETCH_USERS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case FETCH_USERS_SUCCESS:
+      return {
+        loading: false,
+        users: action.payload,
+        error: ''
+      }
+    case FETCH_USERS_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
+    default: return state
   }
-};
+}
 
 export default userReducer;

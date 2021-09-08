@@ -1,11 +1,13 @@
-import useFetch from "../../customHooks/useFetch";
 import { Link } from "react-router-dom";
-import { setFilmList } from "../../redux/details/detailActions";
-import { useDispatch } from "react-redux";
+import { fetchList,setFilmList } from "../../redux/details/detailActions";
+import { useDispatch,useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Films = () => {
   const dispatch=useDispatch();
-  const [data, fetched] = useFetch("films");
+  const data=useSelector(state=>state.categoryList.filmList);
+  const fetched=useSelector(state=>state.categoryList.fetched);
+  useEffect(()=>{dispatch(fetchList("films"));},[])
   let filmRows = "";
   if (fetched) {
     filmRows = data.map((film) => {

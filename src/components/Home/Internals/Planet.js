@@ -1,11 +1,15 @@
-import useFetch from "../../customHooks/useFetch";
 import { Link } from "react-router-dom";
-import { setPlanetList } from "../../redux/details/detailActions";
-import { useDispatch } from "react-redux";
+import { fetchList, setPlanetList } from "../../redux/details/detailActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Planet = () => {
   const dispatch = useDispatch();
-  const [data, fetched] = useFetch("planets");
+  const data = useSelector((state) => state.categoryList.planetList);
+  const fetched = useSelector((state) => state.categoryList.fetched);
+  useEffect(() => {
+    dispatch(fetchList("planets"));
+  }, []);
   let planetRows = "";
   if (fetched) {
     planetRows = data.map((planet) => {
@@ -18,7 +22,6 @@ const Planet = () => {
         </h2>
       );
     });
-    dispatch(setPlanetList(data));
   }
   return <div>{planetRows}</div>;
 };

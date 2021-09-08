@@ -1,11 +1,11 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import "../../componentStyle/navBar.css";
 import { useSelector } from "react-redux";
 
 const Navbar = ({ handleSignOut }) => {
-  const user=useSelector(state => state.user.userDetails)
-  const isAuthenticated=useSelector(state => state.auth.authenticated)
+  const user = useSelector((state) => state.user.users);
+  const isAuthenticated = useSelector((state) => state.auth.authenticated);
 
   return (
     <div>
@@ -18,8 +18,9 @@ const Navbar = ({ handleSignOut }) => {
         <div id="link2">
           {isAuthenticated ? (
             <>
-              <Link id="username" to={`/profile/${user.name}`}>
-                {user.name}
+            {console.log("in nav user",user)}
+              <Link id="username" to={`/profile/${user[0].name}`}>
+                {user[0].name}
               </Link>
               <button onClick={handleSignOut}>Signout</button>
             </>

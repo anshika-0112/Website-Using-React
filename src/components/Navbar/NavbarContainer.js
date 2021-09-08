@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useDispatch } from "react-redux";
-import setUserDetails from "../redux/user/userActions";
+import {fetchUsersSuccess} from "../redux/user/userActions";
 import {authenticate} from "../redux/auth/authActions";
 import { removeItem,getItem } from "../../utils/manageSessionStorage";
 
@@ -12,7 +12,7 @@ const NavbarContainer = () => {
   
   const handleSignOut = () => {
     removeItem("user");
-    dispatch(setUserDetails(null));
+    dispatch(fetchUsersSuccess([]));
     dispatch(authenticate());
     history.push("/");
   };
