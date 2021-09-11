@@ -1,14 +1,18 @@
-import useFetch from "../../customHooks/useFetch";
 import { Link } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import { fetchList, setPeopleList } from "../../redux/details/detailActions";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchList } from "../../redux/details/detailActions";
 import { useEffect } from "react";
+import { CATEGORIES } from "../../constants";
 
 const People = () => {
   const dispatch = useDispatch();
-  const data=useSelector(state=>state.categoryList.peopleList);
-  const fetched=useSelector(state=>state.categoryList.fetched);
-  useEffect(()=>{dispatch(fetchList("people"));},[])
+  const data = useSelector((state) => state.categoryList.peopleList);
+  const fetched = useSelector((state) => state.categoryList.fetched);
+
+  useEffect(() => {
+    dispatch(fetchList(CATEGORIES.PEOPLE));
+  }, []);
+
   let peopleRows = "";
   if (fetched) {
     peopleRows = data.map((people) => {

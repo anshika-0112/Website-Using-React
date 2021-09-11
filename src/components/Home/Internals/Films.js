@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
-import { fetchList,setFilmList } from "../../redux/details/detailActions";
-import { useDispatch,useSelector } from "react-redux";
+import { fetchList } from "../../redux/details/detailActions";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { CATEGORIES } from "../../constants";
 
 const Films = () => {
-  const dispatch=useDispatch();
-  const data=useSelector(state=>state.categoryList.filmList);
-  const fetched=useSelector(state=>state.categoryList.fetched);
-  useEffect(()=>{dispatch(fetchList("films"));},[])
+  const dispatch = useDispatch();
+
+  const data = useSelector((state) => state.categoryList.filmList);
+  const fetched = useSelector((state) => state.categoryList.fetched);
+
+  useEffect(() => {
+    dispatch(fetchList(CATEGORIES.FILM));
+  }, []);
+
   let filmRows = "";
   if (fetched) {
     filmRows = data.map((film) => {
@@ -20,7 +26,6 @@ const Films = () => {
         </h2>
       );
     });
-    dispatch(setFilmList(data));
   }
   return <div>{filmRows}</div>;
 };
