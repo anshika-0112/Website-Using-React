@@ -1,23 +1,35 @@
-import { SET_FILM_LIST, SET_PEOPLE_LIST, SET_PLANET_LIST } from "./detailTypes";
+import {
+  SET_FILM_LIST,
+  SET_PEOPLE_LIST,
+  SET_PLANET_LIST,
+  FETCH_LIST_REQUESTED,
+} from "./detailTypes";
 
 export const setPeopleList = (peopleList) => {
   return {
     type: SET_PEOPLE_LIST,
-    payload: peopleList,
+    peopleList: peopleList,
   };
 };
 
 export const setPlanetList = (planetList) => {
-    console.log("inside planet list",planetList);
   return {
     type: SET_PLANET_LIST,
-    payload: planetList,
+    planetList: planetList,
   };
 };
 
 export const setFilmList = (filmList) => {
   return {
     type: SET_FILM_LIST,
-    payload: filmList,
+    filmList: filmList,
+  };
+};
+
+export const getList = (categoryName) => {
+  console.log("passed here", categoryName);
+  return {
+    type: FETCH_LIST_REQUESTED,
+    payload: categoryName,
   };
 };
