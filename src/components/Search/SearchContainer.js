@@ -19,11 +19,12 @@ const SearchContainer = () => {
         setHasMore(false);
       }
       if (data && data.results) {
-        console.log("here");
-        setSearchList((prevList) =>{ return [...new Set([...prevList, ...data.results])]})
+        setSearchList((prevList) => {
+          return [...new Set([...prevList, ...data.results])];
+        });
       }
     });
-  }, [input,pageNumber]);
+  }, [input, pageNumber]);
   useEffect(() => {
     setSearchList([]);
   }, [input]);

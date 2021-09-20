@@ -1,7 +1,13 @@
 import user from "../../assets/images/userImage.png";
 import "../../componentStyle/login.css";
 
-const Login = ({ state, checkPasswordName, checkUserName, handleSignIn,errorMessage }) => {
+const Login = ({
+  state,
+  checkPasswordName,
+  checkUserName,
+  handleSignIn,
+  errorMessage,
+}) => {
   return (
     <div id="login-page">
       <h1>Login</h1>
@@ -9,22 +15,24 @@ const Login = ({ state, checkPasswordName, checkUserName, handleSignIn,errorMess
       <form onSubmit={handleSignIn}>
         <label className="label">Username</label>
         <input
+          data-testid="userName"
           required
           type="text"
-          value={state.username}
           onChange={checkUserName}
+          value={state.username}
           className="input-field"
         ></input>
         <label className="label">Password</label>
         <input
+          data-testid="password"
           required
           type="password"
           value={state.password}
           onChange={checkPasswordName}
           className="input-field"
         ></input>
-              {errorMessage && <div>{errorMessage}</div>}
-        <button type="submit" className="btn-primary">
+        {errorMessage && <div data-testid="error">{errorMessage}</div>}
+        <button type="submit" className="btn-primary" data-testid="signInBtn">
           Sign in
         </button>
       </form>

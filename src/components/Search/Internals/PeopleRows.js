@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
 const PeopleRows = ({ searchList }) => {
   let peopleRows = null;
@@ -8,7 +8,7 @@ const PeopleRows = ({ searchList }) => {
       const personId = person.url.split("/")[5];
       return (
         <h4 key={person.url}>
-          <Link to={`/People/${personId}`}  className="links">
+          <Link to={`/People/${personId}`} className="links">
             {person.name}
           </Link>
         </h4>
@@ -18,7 +18,9 @@ const PeopleRows = ({ searchList }) => {
   return (
     <>
       {searchList.length !== 0 ? (
-        <div className="searchResults">{peopleRows}</div>
+        <div className="searchResults" data-testid="peopleList">
+          {peopleRows}
+        </div>
       ) : (
         <div>No matches Found</div>
       )}

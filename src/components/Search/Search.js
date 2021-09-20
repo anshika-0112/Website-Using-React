@@ -4,12 +4,22 @@ const PlanetRows = React.lazy(() => import("./Internals/PlanetRows"));
 const PeopleRows = React.lazy(() => import("./Internals/PeopleRows"));
 const FilmRows = React.lazy(() => import("./Internals/FilmRows"));
 
-const Search = ({ handleInput, searchList, input, cName, lastElementRef,loading,hasMore }) => {
+const Search = ({
+  handleInput,
+  searchList,
+  input,
+  cName,
+  lastElementRef,
+  loading,
+  hasMore,
+}) => {
+  console.log("serachList", searchList);
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div id="searchContainer">
         <h1>Search</h1>
         <input
+          data-testid="searchBar"
           value={input}
           onChange={handleInput}
           id="searchInput"
@@ -26,9 +36,7 @@ const Search = ({ handleInput, searchList, input, cName, lastElementRef,loading,
         ) : null}
         {!loading && hasMore && <div>Loading...</div>}
       </div>
-      
-      <div  ref={lastElementRef}></div>
-      
+      <div ref={lastElementRef}></div>
     </Suspense>
   );
 };

@@ -7,10 +7,16 @@ const Planet = () => {
   if (fetched) {
     const planetData = data.results;
     planetRows = planetData.map((planet) => {
-      const planetId=planet.url.split('/')[5];
-      return <h2 key={planet.url}><Link to={`/planets/${planetId}`}className="links" >{planet.name}</Link></h2>;
+      const planetId = planet.url.split("/")[5];
+      return (
+        <h2 key={planet.url}>
+          <Link to={`/planets/${planetId}`} className="links">
+            {planet.name}
+          </Link>
+        </h2>
+      );
     });
   }
-  return <div>{planetRows}</div>;
+  return <div data-testid="planet">{planetRows}</div>;
 };
 export default Planet;

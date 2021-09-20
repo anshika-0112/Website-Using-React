@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import {authContext} from "../context";
+import { authContext } from "../context";
 import Login from "./Login";
 
 const LoginContainer = () => {
@@ -11,11 +11,13 @@ const LoginContainer = () => {
   });
   const [errorMessage, setErrorMessage] = useState(null);
   const auth = useContext(authContext);
-  console.log(auth);
+
   const handleSignIn = (e) => {
     e.preventDefault();
+    console.log("sign in clicked");
     fetchUserDeatils(state.username);
   };
+
   const checkUserName = (event) => {
     console.log(event.target.value);
     setState({ ...state, username: event.target.value });
@@ -25,6 +27,7 @@ const LoginContainer = () => {
   };
   const fetchUserDeatils = async (userName) => {
     const url = `https://swapi.dev/api/people/?search=${userName}`;
+
     const userDetailsResponse = await fetch(url);
     const userDetails = await userDetailsResponse.json();
     let authenticatedUser = [];
